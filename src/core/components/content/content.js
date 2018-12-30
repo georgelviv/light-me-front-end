@@ -1,11 +1,24 @@
 import { connect } from 'react-redux';
 import { ContentView } from './content.view';
-import { ligthGetStatus } from 'core/store';
+import {
+  ligthGetStatus,
+  lightSetOn,
+  lightSelector,
+  lightSetOff
+} from 'core/store';
 
 const mapDispatchToProps = {
-  ligthGetStatus
+  ligthGetStatus,
+  lightSetOn,
+  lightSetOff
 };
 
-const Content = connect(null, mapDispatchToProps)(ContentView);
+const mapStateToProps = (state) => {
+  return {
+    lightState: lightSelector(state)
+  }
+}
+
+const Content = connect(mapStateToProps, mapDispatchToProps)(ContentView);
 
 export { Content };

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { SwtichOnOff } from 'shared/components';
+import {
+  SwtichOnOff,
+  Spinner
+} from 'shared/components';
 import styles from './content.module.scss';
 
 class ContentView extends Component {
@@ -11,15 +14,23 @@ class ContentView extends Component {
   }
 
   onSwitchChange = (val) => {
-    console.log('woo', val);
+    val 
+      ? this.props.lightSetOn()
+      : this.props.lightSetOff();
   }
 
   render() {
+    const { isLoading, isReady, isOn }  = this.props.lightState;
+
     return (
       <div className={ styles.content }>
         <div className={ styles.content__swithWrapper }>
-          <SwtichOnOff onChange={ this.onSwitchChange }></SwtichOnOff>
+          { isReady && (
+            <SwtichOnOff value={ isOn } onChange={ this.onSwitchChange }>
+            </SwtichOnOff>
+          )}
         </div>
+        { isLoading && (<Spinner></Spinner>) }
       </div>
     );
   }
