@@ -2,20 +2,22 @@ import { connect } from 'react-redux';
 import { ContentView } from './content.view';
 import {
   ligthGetStatus,
-  lightSetOn,
+  lightSetDemoMode,
   lightSelector,
-  lightSetOff
+  lightSetOff,
+  isOnSelector
 } from 'core/store';
 
 const mapDispatchToProps = {
   ligthGetStatus,
-  lightSetOn,
+  lightSetDemoMode,
   lightSetOff
 };
 
 const mapStateToProps = (state) => {
   return {
-    lightState: lightSelector(state)
+    lightState: lightSelector(state),
+    isOn: isOnSelector(state)
   }
 }
 

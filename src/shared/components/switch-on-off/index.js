@@ -1,1 +1,1 @@
-export { SwtichOnOff } from './switch-on-off';
+export { SwitchOnOff } from './switch-on-off';

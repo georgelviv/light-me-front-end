@@ -10,9 +10,10 @@ const lightSetOff = () => {
     });
   
     lightService.setOff()
-      .then(() => {
+      .then((status) => {
         dispatch({
-          type: LIGHT_SET_OFF_DONE_ACTION
+          type: LIGHT_SET_OFF_DONE_ACTION,
+          payload: status
         })
       });
   }

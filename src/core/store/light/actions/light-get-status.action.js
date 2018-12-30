@@ -1,4 +1,5 @@
 import { lightService } from 'core/services';
+import { lightError } from './light-error.action';
 
 const LIGHT_GET_STATUS_ACTION = '[LIGHT] get status';
 const LIGHT_SET_STATUS_ACTION = '[LIGHT] set status';
@@ -15,6 +16,8 @@ const ligthGetStatus = () => {
           type: LIGHT_SET_STATUS_ACTION,
           payload: status
         })
+      }).catch((error) => {
+        dispatch(lightError(error));
       });
   }
 }

@@ -1,5 +1,13 @@
 class LightService {
 
+  get POSSIBLE_MODES() {
+    return {
+      demo: 'demo',
+      color: 'color',
+      off: 'off'
+    }
+  }
+
   get LIGHT_FULL_URL() {
     return `http://${this.LIGHT_SERVER_IP}:${this.LIGHT_SERVER_PORT}`;
   }
@@ -21,11 +29,11 @@ class LightService {
         return res.json();
       })
       .then((res) => {
-        return res.status;
+        return res;
       });
   }
 
-  setOn() {
+  setDemoMode() {
     const STATUS_ENDPOINT = '/set-demo-mode';
     const url = `${this.LIGHT_FULL_URL}${ STATUS_ENDPOINT }`;
 
@@ -50,6 +58,11 @@ class LightService {
         return res.status;
       });
   }
+
+  setColorMode(color) {
+
+  }
+
 }
 
 const lightService = new LightService();

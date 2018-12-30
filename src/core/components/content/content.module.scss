@@ -1,9 +1,16 @@
 .content {
-  margin-top: 90px;
+  margin-top: 60px;
   position: relative;
   min-height: 300px;
   &__swithWrapper {
     display: flex;
     justify-content: center;
+  }
+  &__panelWrapper {
+    margin-top: 30px;
+  }
+  &__errorLabel {
+    text-align: center;
+    font-size: 22px;
   }
 }
