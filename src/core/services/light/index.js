@@ -1,0 +1,1 @@
+export { lightService } from './light.service';

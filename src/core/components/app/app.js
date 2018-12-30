@@ -1,18 +1,13 @@
 import React from 'react';
-import styles from './app.module.scss';
-
-import 'core/styles';
-import 'bootstrap/dist/css/bootstrap.css';
-
-import { Title, Content } from 'core/components';
-
+import { Provider } from 'react-redux';
+import { Root } from 'core/components';
+import { store } from 'core/store';
 
 const App = () => {
   return (
-    <div className={styles.app + ` container`}>
-      <Title></Title>
-      <Content></Content>
-    </div>
+    <Provider store={ store }>
+      <Root></Root>
+    </Provider>
   );
 }
 

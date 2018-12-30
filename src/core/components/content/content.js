@@ -1,15 +1,11 @@
-import React from 'react';
-import { SwtichOnOff } from 'shared/components';
-import styles from './content.module.scss';
+import { connect } from 'react-redux';
+import { ContentView } from './content.view';
+import { ligthGetStatus } from 'core/store';
 
-const Content = () => {
-  return (
-    <div className={ styles.content }>
-      <div className={ styles.content__swithWrapper }>
-        <SwtichOnOff></SwtichOnOff>
-      </div>
-    </div>
-  );
-}
+const mapDispatchToProps = {
+  ligthGetStatus
+};
+
+const Content = connect(null, mapDispatchToProps)(ContentView);
 
 export { Content };
