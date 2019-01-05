@@ -6,6 +6,7 @@ $color: #34495e;
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: center;
   }
 
   &__itemBtn {
@@ -30,5 +31,9 @@ $color: #34495e;
         color: #fff;
       }  
     }
+  }
+
+  &__content {
+    margin-top: 20px;
   }
 }

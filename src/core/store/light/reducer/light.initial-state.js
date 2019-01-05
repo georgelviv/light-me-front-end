@@ -11,7 +11,14 @@ const lightInitalState = {
   isError: false,
   error: null,
   modes,
-  activeMode: lightService.POSSIBLE_MODES.off
+  activeMode: {
+    mode: lightService.POSSIBLE_MODES.demo,
+    params: null
+  },
+  lastActiveMode: {
+    mode: lightService.POSSIBLE_MODES.demo,
+    params: null
+  }
 };
 
 export { lightInitalState };

@@ -6,85 +6,36 @@ import {
   LIGHT_SET_DEMO_MODE_DONE_ACTION,
   LIGHT_SET_OFF_REQUEST_ACTION,
   LIGHT_SET_OFF_DONE_ACTION,
-  LIGHT_ERROR_ACTION
+  LIGHT_ERROR_ACTION,
+  LIGHT_SET_COLOR_MODE_REQUEST_ACTION,
+  LIGHT_SET_COLOR_MODE_DONE_ACTION
 } from '../actions';
+import {
+  onGetStatus,
+  onSetStatus,
+  onSetChangeModeDone,
+  onSetChangeModeRequest,
+  onError
+} from './light.helpers';
  
 const lightReducer = (state = lightInitalState, action) =>  {
   switch (action.type) {
     case LIGHT_GET_STATUS_ACTION:
       return onGetStatus(state);
     case LIGHT_SET_STATUS_ACTION:
-      return onSetStatus(state, action.payload);
+      return onSetStatus(state, action.payload.status);
+    case LIGHT_SET_COLOR_MODE_REQUEST_ACTION:
     case LIGHT_SET_DEMO_MODE_REQUEST_ACTION:
-      return onSetDemoModeRequest(state);
-    case LIGHT_SET_DEMO_MODE_DONE_ACTION:
-      return onSetDemoModeDone(state, action.payload);
     case LIGHT_SET_OFF_REQUEST_ACTION:
-      return onSetOffRequest(state);
+      return onSetChangeModeRequest(state);
+    case LIGHT_SET_DEMO_MODE_DONE_ACTION:
+    case LIGHT_SET_COLOR_MODE_DONE_ACTION:
     case LIGHT_SET_OFF_DONE_ACTION:
-      return onSetOffDone(state, action.payload);
+      return onSetChangeModeDone(state, action.payload);
     case LIGHT_ERROR_ACTION:
       return onError(state, action.payload);
     default:
       return state;
-  }
-}
-
-function onGetStatus(state) {
-  return {
-    ...state,
-    isLoading: true
-  }
-}
-
-function onSetStatus(state, status) {
-  return {
-    ...state,
-    isLoading: false,
-    isError: false,
-    isReady: true,
-    activeMode: status.mode
-  }
-}
-
-function onSetDemoModeRequest(state) {
-  return {
-    ...state,
-    isLoading: true
-  }
-}
-
-function onSetDemoModeDone(state, status) {
-  return {
-    ...state,
-    isLoading: false,
-    isOn: true,
-    activeMode: status.mode
-  }
-}
-
-function onSetOffRequest(state) {
-  return {
-    ...state,
-    isLoading: true
-  }
-}
-
-function onSetOffDone(state, status) {
-  return {
-    ...state,
-    isLoading: false,
-    isOn: false,
-    activeMode: status.mode
-  }
-}
-
-function onError(state, error) {
-  return {
-    ...state,
-    isError: true,
-    isLoading: false,
-    error
   }
 }
 

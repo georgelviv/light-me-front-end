@@ -21,8 +21,8 @@ class LightService {
   }
 
   getStatus() {
-    const STATUS_ENDPOINT = '/status';
-    const url = `${this.LIGHT_FULL_URL}${ STATUS_ENDPOINT }`;
+    const ENDPOINT = '/status';
+    const url = `${this.LIGHT_FULL_URL}${ ENDPOINT }`;
 
     return fetch(url)
       .then((res) => {
@@ -34,21 +34,8 @@ class LightService {
   }
 
   setDemoMode() {
-    const STATUS_ENDPOINT = '/set-demo-mode';
-    const url = `${this.LIGHT_FULL_URL}${ STATUS_ENDPOINT }`;
-
-    return fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        return res.status;
-      });
-  }
-
-  setOff() {
-    const STATUS_ENDPOINT = '/off';
-    const url = `${this.LIGHT_FULL_URL}${ STATUS_ENDPOINT }`;
+    const ENDPOINT = '/set-demo-mode';
+    const url = `${this.LIGHT_FULL_URL}${ ENDPOINT }`;
 
     return fetch(url)
       .then((res) => {
@@ -60,9 +47,30 @@ class LightService {
   }
 
   setColorMode(color) {
+    const ENDPOINT = '/set-color-mode';
+    const url = `${this.LIGHT_FULL_URL}${ ENDPOINT }/${color.replace('#', '')}`;
 
+    return fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        return res.status;
+      });
+  } 
+
+  setOff() {
+    const ENDPOINT = '/off';
+    const url = `${this.LIGHT_FULL_URL}${ ENDPOINT }`;
+
+    return fetch(url)
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        return res.status;
+      });
   }
-
 }
 
 const lightService = new LightService();

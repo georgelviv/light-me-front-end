@@ -12,7 +12,12 @@ const SwitchOnOff = ({ onChange, value }) => {
 
   return (
     <label className='switch-on-off'>
-      <input type='checkbox' ref={ inputEl } onClick={ onClick } value={ value } readOnly />
+      <input type='checkbox'
+        ref={ inputEl }
+        onClick={ onClick }
+        value={ value }
+        checked={ value }
+        readOnly />
       <span className='switch-on-off__back'>
         <span className='switch-on-off__toggle'></span>
         <span className='switch-on-off__label switch-on-off__label--on'>ON</span>

@@ -47,7 +47,7 @@ class Panel extends Component {
               </li>
           )})}
         </ul>
-        <div>
+        <div className={ styles.panel__content }>
           { children }
         </div>
       </div>

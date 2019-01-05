@@ -17,3 +17,11 @@ export {
   LIGHT_ERROR_ACTION,
   lightError
 } from './light-error.action';
+export {
+  LIGHT_SET_COLOR_MODE_REQUEST_ACTION,
+  LIGHT_SET_COLOR_MODE_DONE_ACTION,
+  lightSetColorMode
+} from './light-set-color-mode.action';
+export {
+  lightSetMode
+} from './light-set-mode.action';

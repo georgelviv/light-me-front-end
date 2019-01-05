@@ -7,7 +7,8 @@ import {
 import styles from './content.module.scss';
 import { lightService } from 'core/services';
 import {
-  DemoModePanel
+  DemoModePanel,
+  ColorModePanel
 } from 'core/components';
 
 class ContentView extends Component {
@@ -25,7 +26,7 @@ class ContentView extends Component {
 
   onSwitchChange = (val) => {
     val 
-      ? this.props.lightSetDemoMode()
+      ? this.props.lightSetMode(this.props.lightState.lastActiveMode)
       : this.props.lightSetOff();
   }
 
@@ -40,7 +41,9 @@ class ContentView extends Component {
   getPanelContent() {
     const { activeTab } = this.state;
     switch (activeTab) {
-      case lightService.POSSIBLE_MODES.demo:
+      case lightService.POSSIBLE_MODES.color:
+        return (<ColorModePanel></ColorModePanel>);
+      default:
         return (<DemoModePanel></DemoModePanel>);
     }
   }
@@ -69,6 +72,7 @@ class ContentView extends Component {
           <div className={ styles.content__errorLabel }>
             Cannot connect to led strip 
             <span role='img' aria-labelledby='jsx-a11y/accessible-emoji'>😔</span>
+            <button>Retry</button>
           </div>
         )}
         { isLoading && (<Spinner></Spinner>) }
